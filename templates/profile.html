@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if not current_user.is_authenticated %}
+    <meta http-equiv="refresh" content="0; url='/'"/>
+    {% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/profile.css">
+    <link rel="stylesheet" type="text/css" href="/static/calendar.css">
+    <link type="type=text/javascript" href="/static/calendar.js">
+    <title>TasksTime: {{ username }}</title>
+</head>
+<body>
+
+<nav class="topnav">
+    <a href="/">Главная</a>
+    <div class="topnav-right">
+        <a href="/logout">Выйти</a>
+    </div>
+</nav>
+
+<div style="margin: 15px">
+
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            <div id="calendar"></div>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+            <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+            <script id="rendered-js" src="/static/render.js"></script>
+        </div>
+        <div class="column">
+            <h2>Задачи</h2>
+            <div class="tasks">...</div>
+            <div class="create_new_task">
+                <form action="" method="post">
+                    {{ form.hidden_tag() }}
+                    <p>{{ form.title(class="form-control", placeholder=form.title.name) }}</p>
+                    <p>{{ form.content(class="form-control", placeholder=form.content.name) }}</p>
+                    <p id="btn">{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+                    <script>
+                        btn.onclick = function() {
+                            alert('cpc');
+                        };
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

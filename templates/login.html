@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/login_register.css">
+    <title>Авторизация</title>
+</head>
+<body>
+
+<form class="form-signin" action="" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>
+
+    {{ form.hidden_tag() }}
+    <p id="forEmail">
+        {{ form.email.label(class="sr-only", for="inputEmail") }}
+        {{ form.email(class="form-control", type="email", placeholder=form.email.name) }}
+        {% for error in form.email.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+    </p>
+    <p id="forPassword">
+        {{ form.password.label(class="sr-only", for="inputPassword") }}
+        {{ form.password(class="form-control", type="password", placeholder=form.password.name) }}
+        {% for error in form.password.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endfor %}
+    </p>
+    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    <div>{{ message }}</div>
+
+</form>
+
+</body>
+</html>

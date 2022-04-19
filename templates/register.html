@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="static/login_register.css">
+    <title>Регистрация</title>
+</head>
+<body>
+
+<form class="form-signin" action="" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.email.label(class="sr-only") }}
+        {{ form.email(class="form-control", type="email", placeholder=form.email.name) }}
+        {% for error in form.email.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label(class="sr-only") }}
+        {{ form.password(class="form-control", type="password", placeholder=form.password.name) }}
+        {% for error in form.password.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password_again.label(class="sr-only") }}
+        {{ form.password_again(class="form-control", type="password",
+           placeholder=form.password_again.name) }}
+        {% for error in form.password_again.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.name.label(class="sr-only") }}
+        {{ form.name(class="form-control", placeholder=form.name.name) }}
+        {% for error in form.name.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.about.label(class="sr-only") }}
+        {{ form.about(class="form-control", placeholder=form.about.name) }}
+        {% for error in form.about.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+
+</form>
+
+</body>
+</html>

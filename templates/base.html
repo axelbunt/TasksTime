@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/profile.css">
+    <title>{{title}}</title>
+</head>
+<body>
+
+<nav class="topnav"> {% if current_user.is_authenticated %}
+    <div class="topnav-right">
+        <a href="/profile/{{ current_user.name }}">Профиль</a>
+        <a href="/logout">Выйти</a>
+    </div>
+    {% else %}
+    <div class="topnav-right">
+        <a href="/register">Зарегистрироваться</a>
+        <a href="/login">Войти</a>
+    </div>
+    {% endif %}
+</nav>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+</main>
+
+
+</body>
+</html>
